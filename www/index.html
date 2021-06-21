@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/index.css">
+        <title>Landing Page</title>
+        <link rel="stylesheet" href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+        <script type="text/javascript" src="jquery-1.11.1.js"></script>
+        <script type="text/javascript" src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript">
+            function Kambing() {
+                alert("Welcome to Rahsia Kambing page !");
+            }
+            function News() {
+                alert("This is some about our news !");
+            }
+            function validation() {
+                var name = document.getElementById("name1").value;
+                var email = document.getElementById("email1").value;
+                if (name != '' && email != '') {
+                        alert(name + ", you have successfully applied, please wait for our news!!");
+                        return true;
+                    }
+                else{
+                    alert("Please fill in all the blanks...");
+                    return false;
+                }
+            }
+
+            function checking() {
+                var button = document.getElementById("check")
+                if (button.checked){
+                    document.getElementById("name2").disabled = false
+                    document.getElementById("email2").disabled = false
+                    document.getElementById("number").disabled = false
+                    document.getElementById("bank").disabled = false
+                    document.getElementById("bukti").disabled = false
+                }   else{
+                    document.getElementById("name2").disabled = true
+                    document.getElementById("email2").disabled = true
+                    document.getElementById("number").disabled = true
+                    document.getElementById("bank").disabled = true
+                    document.getElementById("bukti").disabled = true
+                }
+            }
+
+            function doPayment() {
+                var name2 = document.getElementById("name2").value;
+                var email2 = document.getElementById("email2").value;
+                var number = document.getElementById("number").value;
+                var bank = document.getElementById("bank").value;
+                var bukti = document.getElementById("bukti").value;
+                if (name2 != '' && email2 != '' && number != '' && bank != '' && bukti != '') {
+                    alert(name2 + ", You have successfully completed the payment, and the e-book will be delivered to you soon!!");
+                    return true;
+                    }
+                else {
+                alert("Please complete all your information...");
+                return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+
+<!--------------------------------------------
+            landing page
+-------------------------------------------->
+
+        <div data-role="page" id="landing">
+            <div data-role="header" data-theme="b">
+                <h1>rahsiaKambing.com
+                   <br>PANDUAN LENGKAPMEMULAKAN PENTERNAKAN KAMBING
+                </h1>
+            </div>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#landing" onclick="Kambing()">Landing</a></li>
+                    <li><a href="#content" onclick="News()">News</a></li>
+                    <li><a href="#payment">PEMBAYARAN ONLINE</a></li>
+                </ul>
+            </div>
+            <div data-role="content">
+                <table>
+                    <tr>
+                        <th>
+                            <img src="img/kambing.PNG">
+                                <h1>"Berminat Menternak Kambing?"</h1>
+                                <p class="text">
+                                    <font color="blue">Ketahui... Bagaimana Cara Memulakan Penternakan Kambing Yang Betul Dengan Kos Yang Rendah! Tanpa Perlu Membuat Sebarang Pinjaman!.
+                                    </font>
+                                </p>
+                                <table align="center" class="percuma">
+                                    <tr>
+                                        <th>Tips & Sample Percuma!</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Masukkan Nama & Email anda dibawah untuk menerima tips-tips berkaitan penternakan kambing secara PERCUMA!.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <form method="post" onsubmit="validation()">
+                                                <div data-role="fieldcontain">
+                                                    <label for="name">Nama Panggilan:</label>
+                                                    <input type="text" id="name1">
+                                                </div>
+                                                <div data-role="fieldcontain">
+                                                    <label for="email">E-Mail:</label>
+                                                    <input type="email" id="email1">
+                                                </div>
+                                                <input type="submit" id="onlinepay" value="Berikan Saya Tip PERCUMA Tentang Penternakan Kambing SEKARANG!" data-inline="true">
+                                            </form>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b">
+                Dari Meja Mohamed Farid Sulaiman
+                <br>Selesa, 15 Julai 2008
+            </div>
+        </div>
+
+<!--------------------------------------------
+            content page
+-------------------------------------------->
+
+       <div data-role="page" id="content">
+            <div data-role="header" data-theme="b">
+                <h1>rahsiaKambing.com
+                   <br>PANDUAN LENGKAPMEMULAKAN PENTERNAKAN KAMBING
+                </h1>
+            </div>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#landing" onclick="Kambing()">Landing</a></li>
+                    <li><a href="#content" onclick="News()">News</a></li>
+                    <li><a href="#payment">PEMBAYARAN ONLINE</a></li>
+                </ul>
+            </div>
+            <div data-role="content">
+                <table class="content">
+                    <tr>
+                        <td>
+                            <img src="img/newspaper.PNG" class="paper">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text">
+                                <br>
+                                Banyak kisah-kisah kejayaan usahawan-usahawan tani ini dipaparkan, sama ada di akhbar mahupun TV. 
+                                Kisah-kisah ini amat mengujakan kepada saya, kerana saya amat meminati bidang pertanian dan penternakan. 
+                                Sememangnya, sudah lama saya menyimpan hasrat untuk menceburkan diri di dalam bidang pertanian dan juga penternakan 
+                                ini. Tetapi, disebabkan saya bekerja makan gaji.. maka niat tersebut terpaksa dipendamkan.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2>
+                                Hasrat Terbantut....!
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text">
+                                Ditambah lagi dengan kekurangan sumber maklumat tentang bagaimana hendak memulakan serta menceburkan diri di dalam 
+                                projek pertanian & penternakan ini. Menyebabkan, hasrat saya untuk bergelar seorang usahawan tani yang berjaya terbenam.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text">
+                                <br>
+                                Sehinggalah pada suatu hari, sewaktu saya pulang ke kampung di Melaka, saya telah terserempak dengan seorang pakcik yang 
+                                menetap di kampung saya. Saya gelarkan dia pakcik H, sejak dulu lagi, saya memang tahu pakcik H ini ada menternak kambing.. 
+                                tapi pada waktu itu, saya tidak ambil peduli sangat.. maklumlah.. orang kampung bela kambing... biasalah kan?
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text">
+                                <br>
+                                Dulu, pakcik H ini membela 5 ekor kambing.. tapi, setelah 7 tahun berlalu, bilangan kambingnya telah mencecah 1,000 ekor. 
+                                Pergh!! Saya memang betul-betul tidak sangka.. pakcik H yang dulu saya pandang hanyalah seorang "pakcik kampung yang biasa-biasa".. 
+                                kini telah bertukar menjadi seorang penternak kambing yang sangat berjaya!. Perkara ini telah membuka minda dan fikiran saya untuk 
+                                melihat bidang penternakan kambing ini dengan lebih luas & positif. Saya mula mendekati pakcik H dan mula mempelajari serba sedikit 
+                                mengenai selok belok penternakan kambing. Alhamdulilah.. pakcik H tidak kedekut ilmu dan sudi berkongsi pengalaman beliau di dalam 
+                                usaha menternak kambing.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="text">
+                                <br>
+                                Saya sangat gembira dan bersyukur mengenali beliau, banyak perkara saya belajar dari beliau dan kini, saya menganggap beliau sebagai 
+                                salah seorang mentor saya di dalam bidang penternakan kambing.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h1>Our Location</h1>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d716.4552178518094!2d111.51459039027901!3d2.0630390555601865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31f9c184376e21cd%3A0x76303f46d9252283!2zMsKwMDMnNDguMCJOIDExMcKwMzAnNTMuMCJF!5e1!3m2!1szh-CN!2smy!4v1624241592640!5m2!1szh-CN!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b">
+                Dari Meja Mohamed Farid Sulaiman
+                <br>Selesa, 15 Julai 2008
+            </div>
+        </div>
+
+<!--------------------------------------------
+            online payment page
+-------------------------------------------->
+        <div data-role="page" id="payment">
+            <div data-role="header" data-theme="b">
+                <h1>rahsiaKambing.com
+                <br>PANDUAN LENGKAPMEMULAKAN PENTERNAKAN KAMBING
+                </h1>
+            </div>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#landing" onclick="Kambing()">Landing Page</a></li>
+                    <li><a href="#content" onclick="News()">News</a></li>
+                    <li><a href="#payment">PEMBAYARAN ONLINE</a></li>
+                </ul>
+            </div>
+            <div data-role="content">
+                <h3>
+                    <font color="blue">
+                        KAEDAH #2: PEMBAYARAN ONLINE SECARA FUND TRANSFER
+                    </font>
+                </h3>
+                <table align="center" border="1">
+                    <tr>
+                        <td>Langkah 1 ) Sila login ke akaun Maybank2u / CIMBClciks / BankIslam anda dan lakukan "fund transfer" ke salah suatu
+                            akaun bank dibawah sebanyak RM47.
+                            <br>
+                            <br>
+                            Maybank &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2371283674300 - Extreme D Enterprise
+                            <br>Bank Islam &nbsp;&nbsp;&nbsp; 123812312938 - Chieng Kung Jie
+                            <br>CIMB &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 317416785960 - Chiu Siong Yew
+                            <br>
+                            <br>
+                            Langkah 2 ) Selepas itu, simpan resit transaksi yang anda terima dan sila Isikan borang pengesahkan bayaran dibawah.
+                            <br>
+                            <form method="post" onsubmit="doPayment()">
+                                <div data-role="fieldcontain">
+                                    <input type="checkbox" id="check" onchange="checking()">
+                                    <label for="check">"Ya! Saya telah membuat pembayaran. Sila hantarkan produk tersebut ke alamat saya seperti dibawah.</label>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <label for="name">Nama</label>
+                                    <input type="text" id="name2">
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <label for="email">E-Mail</label>
+                                    <input type="email" id="email2">
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <label for="number">Telefon</label>
+                                    <input type="number" id="number">
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <label for="bank">Bank</label>
+                                    <select name="bank" id="bank">
+                                        <option value="maybank">Maybank</option>
+                                        <option value="islam">Bank Islam</option>
+                                        <option value="cimb">CIMB</option>
+                                    </select>
+                                </div>
+                                <div data-role="fieldcontain">
+                                    <label for="bukti">Bukti Pembayaran</label>
+                                    <textarea name="bukti" id="bukti" cols="30" rows="10"></textarea>
+                                </div>
+                                <input type="submit" id="onlinepay" value="Hantar Maklumat Pembayaran" data-inline="true">
+                            </form>
+                            <br>
+                            <br>
+                            Langkah 3 ) Kami akan menyemak maklumat bayaran anda terlebih dahulu dan <strong><u>ebbok tersebut akan dihantar ke email anda dalam masa 24 jam.</u></strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div data-role="footer" data-position="fixed" data-theme="b">
+                Dari Meja Mohamed Farid Sulaiman
+                <br>Selesa, 15 Julai 2008
+            </div>
+        </div>
+    </body>
+</html>
